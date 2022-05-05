@@ -1,10 +1,10 @@
 ![Lightspeed eCom](https://developers.lightspeedhq.com/images/new_logo.png)
 
-[![Latest Stable Version](http://img.shields.io/packagist/v/seoshop/seoshop-php.svg)](https://packagist.org/packages/seoshop/seoshop-php)
-[![Latest Unstable Version](http://img.shields.io/packagist/vpre/seoshop/seoshop-php.svg)](https://packagist.org/packages/seoshop/seoshop-php)
+[![Latest Stable Version](http://img.shields.io/packagist/v/coddin-web/lightspeed-php-sdk.svg)](https://packagist.org/packages/seoshop/seoshop-php)
+[![Latest Unstable Version](http://img.shields.io/packagist/vpre/coddin-web/lightspeed-php-sdk.svg)](https://packagist.org/packages/seoshop/seoshop-php)
 ![License](http://img.shields.io/badge/license-MIT-green.svg)
 
-# Lightspeed eCom PHP API client
+# Improved Lightspeed eCom PHP API client
 This package is a convenience wrapper to communicate with the Lightspeed eCom REST-API.
 
 
@@ -20,26 +20,14 @@ To use the Lightspeed eCom PHP API client, the following things are required:
 By far the easiest way to install the Lightspeed eCom PHP API client is to require it with [Composer](http://getcomposer.org/doc/00-intro.md).
 
 ``` bash
-$ composer require seoshop/seoshop-php:^1.9
+$ composer require coddin-web/lightspeed-php-sdk:^1.9
 ```
 ```json
 {
     "require": {
-        "seoshop/seoshop-php": "^1.9"
+        "coddin-web/lightspeed-php-sdk": "^1.9"
     }
 }
-```
-
-
-### Manual Installation
-Obtain the latest version of the Lightspeed eCom PHP API client
-``` bash
-git clone https://github.com/SEOshop/API-PHP-Client
-```
-
-And include the class in your project
-``` php
-require_once '/path/to/lightspeed-php-sdk/src/ApiClient.php';
 ```
 
 ## Usage
@@ -87,12 +75,4 @@ Read our tutorials on how to [build](http://developers.lightspeedhq.com/ecom/tut
 More documentation can be found at [developers.lightspeedhq.com/ecom](http://developers.lightspeedhq.com/ecom)
 
 ## Contributing
-We love contributions, but please note that the API client is generated. If you have suggested changes, you may still create a PR, but your PR will not be merged. We will however adapt the generator to reflect your changes. You can also create a GitHub issue if there's something you miss.
-
-## Unofficial clients for other languages
-- **PHP**
-    - [laravel-lightspeed-api](https://github.com/gunharth/laravel-lightspeed-api) by [Gunharth Randolf @gunharth](https://github.com/gunharth)
-- **Ruby** 
-    - [seoshop-api](https://github.com/YotpoLtd/seoshop-api) by [Yotpo Ltd @YotpoLtd](https://github.com/YotpoLtd)
-- **Java**
-    - [lightspeedecom-api](https://github.com/Falkplan/lightspeedecom-api) by [Falkplan](https://github.com/Falkplan)
+Send a PR!
