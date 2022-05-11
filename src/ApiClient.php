@@ -277,6 +277,10 @@ class ApiClient
      */
     public $productsFiltervalues;
     /**
+     * @var ApiResourceProductsCategories
+     */
+    public $productsCategories;
+    /**
      * @var ApiResourceProductsImages
      */
     public $productsImages;
@@ -657,6 +661,7 @@ class ApiClient
         $this->products                  = new ApiResourceProducts($this);
         $this->productsAttributes        = new ApiResourceProductsAttributes($this);
         $this->productsFiltervalues      = new ApiResourceProductsFiltervalues($this);
+        $this->productsCategories        = new ApiResourceProductsCategories($this);
         $this->productsImages            = new ApiResourceProductsImages($this);
         $this->productsMetafields        = new ApiResourceProductsMetafields($this);
         $this->productsRelations         = new ApiResourceProductsRelations($this);
