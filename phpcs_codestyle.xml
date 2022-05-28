@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<ruleset name="CodeStyle">
+    <description>Check for code style.</description>
+
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+    <arg name="cache"/>
+    <arg value="sp"/>
+
+    <config name="installed_paths" value="vendor/slevomat/coding-standard"/>
+
+    <rule ref="PSR12">
+        <exclude-pattern>*.js</exclude-pattern>
+        <exclude name="PSR12.Classes.ClosingBrace"/>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="150"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" type="bool" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall" />
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration" />
+
+    <!-- Don't hide tokenizer exceptions -->
+    <rule ref="Internal.Tokenizer.Exception">
+        <type>error</type>
+    </rule>
+
+    <!-- Include some sniffs from other standards that don't conflict with PEAR -->
+    <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+    <rule ref="Squiz.Arrays.ArrayDeclaration">
+        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed" />
+        <exclude name="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned" />
+        <exclude name="Squiz.Arrays.ArrayDeclaration.KeyNotAligned" />
+        <exclude name="Squiz.Arrays.ArrayDeclaration.ValueNotAligned" />
+        <exclude name="Squiz.Arrays.ArrayDeclaration.CloseBraceNotAligned" />
+    </rule>
+    <rule ref="Squiz.ControlStructures.ControlSignature"/>
+    <rule ref="Squiz.ControlStructures.ElseIfDeclaration"/>
+    <rule ref="Squiz.Commenting.BlockComment">
+        <exclude name="Squiz.Commenting.BlockComment.WrongStart"/>
+        <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter"/>
+    </rule>
+    <rule ref="Squiz.Commenting.DocCommentAlignment"/>
+    <rule ref="Squiz.Commenting.EmptyCatchComment"/>
+    <rule ref="Squiz.Commenting.InlineComment">
+        <exclude name="Squiz.Commenting.InlineComment.DocBlock"/>
+    </rule>
+    <!--    <rule ref="Squiz.Commenting.LongConditionClosingComment"/>-->
+    <rule ref="Squiz.Commenting.PostStatementComment"/>
+    <rule ref="Squiz.Formatting.OperatorBracket"/>
+    <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing"/>
+    <rule ref="Squiz.Operators.ComparisonOperatorUsage">
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+    </rule>
+    <rule ref="Squiz.Scope.MethodScope"/>
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound"/>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing">
+        <exclude name="Squiz.WhiteSpace.OperatorSpacing.SpacingBefore"/>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.ControlStructures.DisallowYodaConditions"/>
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="Generic.NamingConventions.ConstructorName"/>
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+    <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+    <rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
+    <rule ref="PSR2.Classes.PropertyDeclaration"/>
+    <rule ref="PSR2.Methods.MethodDeclaration"/>
+    <rule ref="PSR2.Files.EndFileNewline"/>
+    <rule ref="PSR12.Files.OpenTag"/>
+    <rule ref="Zend.Files.ClosingTag"/>
+
+    <!-- PEAR uses warnings for inline control structures, so switch back to errors -->
+    <rule ref="Generic.ControlStructures.InlineControlStructure">
+        <properties>
+            <property name="error" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Check var names, but we don't want leading underscores for private vars -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName"/>
+    <rule ref="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Only one argument per line in multi-line function calls -->
+    <rule ref="PEAR.Functions.FunctionCallSignature">
+        <properties>
+            <property name="allowMultipleArguments" value="false"/>
+        </properties>
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+    </rule>
+
+    <!-- Ban some functions -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="sizeof" value="count"/>
+                <element key="delete" value="unset"/>
+                <element key="print" value="echo"/>
+                <element key="is_null" value="null"/>
+                <element key="create_function" value="null"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- We DEFINITELY don't want this -->
+    <rule ref="Generic.Formatting.MultipleStatementAlignment">
+        <properties>
+            <property name="maxPadding" value="1"/>
+        </properties>
+    </rule>
+</ruleset>

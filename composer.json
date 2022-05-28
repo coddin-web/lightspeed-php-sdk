@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
@@ -25,5 +25,39 @@
         "psr-4": {
             "Lightspeed\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.6",
+        "phpstan/phpstan-strict-rules": "^1.2",
+        "phpunit/phpunit": "^9.5",
+        "rregeer/phpunit-coverage-check": "^0.3.1",
+        "slevomat/coding-standard": "^7.1",
+        "squizlabs/php_codesniffer": "^3.6",
+        "dg/bypass-finals": "^1.3",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "rector/rector": "^0.12.23"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=./phpcs_codestyle.xml -n src tests",
+        "phpcs-fix": "phpcbf --standard=./phpcs_codestyle.xml -n src tests",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "phpunit": "vendor/bin/phpunit -c phpunit.xml.dist",
+        "phpunitwcov": "XDEBUG_MODE=coverage vendor/bin/phpunit -c phpunit.xml.dist --coverage-html reports/ --coverage-clover clover.xml",
+        "phpcoverage": "coverage-check clover.xml 36.9",
+        "checkup": [
+            "@phpcs",
+            "@phpstan",
+            "@phpunitwcov",
+            "@phpcoverage"
+        ],
+        "coveragecheck": [
+            "@phpunitwcov",
+            "@phpcoverage"
+        ]
     }
 }
